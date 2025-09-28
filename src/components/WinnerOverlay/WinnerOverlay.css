@@ -1,0 +1,312 @@
+.winner-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    animation: fadeIn 0.5s ease;
+    backdrop-filter: blur(10px);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.winner-container {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    padding: 40px;
+    max-width: 500px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    text-align: center;
+    box-shadow: 
+        0 32px 64px -12px rgba(0, 0, 0, 0.6),
+        0 0 0 1px rgba(255, 255, 255, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    animation: slideUp 0.6s ease;
+    color: #ffffff;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.trophy-section {
+    margin-bottom: 30px;
+}
+
+.trophy {
+    font-size: 80px;
+    margin-bottom: 20px;
+    animation: bounce 2s infinite;
+    filter: drop-shadow(0 0 20px rgba(255, 204, 0, 0.5));
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-20px);
+    }
+    60% {
+        transform: translateY(-10px);
+    }
+}
+
+.winner-title {
+    font-size: 32px;
+    margin: 0 0 10px 0;
+    color: #ffffff;
+    font-weight: 700;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.winner-name {
+    font-size: 24px;
+    margin: 0 0 20px 0;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 600;
+}
+
+.winner-stats {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-bottom: 30px;
+}
+
+.stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.stat-value {
+    font-size: 36px;
+    font-weight: 700;
+    color: #007AFF;
+    margin-bottom: 5px;
+    text-shadow: 0 0 10px rgba(0, 122, 255, 0.3);
+}
+
+.stat-label {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.6);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 500;
+}
+
+.final-scoreboard {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    padding: 25px;
+    margin: 30px 0;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.final-scoreboard h3 {
+    margin: 0 0 20px 0;
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.final-scores {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.final-score-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.final-score-row:hover {
+    background: rgba(255, 255, 255, 0.12);
+    transform: translateY(-1px);
+}
+
+.final-score-row.winner-row {
+    background: rgba(255, 204, 0, 0.15);
+    border: 2px solid rgba(255, 204, 0, 0.4);
+    transform: scale(1.02);
+    box-shadow: 
+        0 8px 32px rgba(255, 204, 0, 0.2),
+        0 0 20px rgba(255, 204, 0, 0.1);
+}
+
+.ranking {
+    font-size: 18px;
+    font-weight: 700;
+    color: #ffffff;
+    min-width: 30px;
+}
+
+.player-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+    justify-content: flex-start;
+    margin-left: 20px;
+}
+
+.color-dot {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.color-dot.red {
+    background-color: #FF3B30;
+    box-shadow: 0 0 10px rgba(255, 59, 48, 0.4);
+}
+
+.color-dot.blue {
+    background-color: #007AFF;
+    box-shadow: 0 0 10px rgba(0, 122, 255, 0.4);
+}
+
+.color-dot.green {
+    background-color: #34C759;
+    box-shadow: 0 0 10px rgba(52, 199, 89, 0.4);
+}
+
+.color-dot.yellow {
+    background-color: #FFCC00;
+    box-shadow: 0 0 10px rgba(255, 204, 0, 0.4);
+}
+
+.color-name {
+    font-weight: 600;
+    color: #ffffff;
+    font-size: 16px;
+}
+
+.crown {
+    font-size: 20px;
+    filter: drop-shadow(0 0 10px rgba(255, 204, 0, 0.6));
+}
+
+.final-score-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.points {
+    font-size: 18px;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.captures-count {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.6);
+    margin-top: 2px;
+}
+
+.winner-actions {
+    margin-top: 30px;
+}
+
+.play-again-btn {
+    background: #007AFF;
+    color: white;
+    border: none;
+    padding: 16px 40px;
+    font-size: 18px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 
+        0 8px 32px rgba(0, 122, 255, 0.3),
+        0 1px 3px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(20px);
+}
+
+.play-again-btn:hover {
+    background: #0056CC;
+    transform: translateY(-2px);
+    box-shadow: 
+        0 12px 40px rgba(0, 122, 255, 0.4),
+        0 4px 12px rgba(0, 0, 0, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.play-again-btn:active {
+    transform: translateY(0);
+    box-shadow: 
+        0 4px 16px rgba(0, 122, 255, 0.3),
+        0 1px 3px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+@media (max-width: 600px) {
+    .winner-container {
+        padding: 30px 20px;
+        margin: 20px;
+    }
+    
+    .trophy {
+        font-size: 60px;
+    }
+    
+    .winner-title {
+        font-size: 24px;
+    }
+    
+    .winner-name {
+        font-size: 18px;
+    }
+    
+    .winner-stats {
+        gap: 20px;
+    }
+    
+    .stat-value {
+        font-size: 28px;
+    }
+    
+    .player-info {
+        margin-left: 10px;
+    }
+}

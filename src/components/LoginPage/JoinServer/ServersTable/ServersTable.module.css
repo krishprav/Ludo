@@ -1,0 +1,128 @@
+.roomName {
+    max-width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: left !important;
+}
+.rooms > thead > tr :nth-child(2) {
+    text-align: left;
+}
+.rooms > tbody > tr > td > img {
+    margin-right: 5px;
+    width: 20px;
+    height: 20px;
+}
+
+.rooms > th {
+    padding: 16px 12px;
+    text-align: center;
+    height: 60px;
+}
+.rooms > tbody > tr > td {
+    padding: 12px;
+    text-align: center;
+    height: 60px;
+    color: #ffffff;
+    font-size: 14px;
+}
+
+.rooms {
+    border-collapse: collapse;
+    width: 100%;
+    height: fit-content;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    overflow: hidden;
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.3),
+        0 1px 3px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.rooms thead {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.rooms th {
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.rooms tbody tr {
+    transition: all 0.3s ease;
+}
+
+.rooms tbody tr:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.rooms tbody tr:nth-child(even) {
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.rooms tbody tr:nth-child(even):hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.lastColumn {
+    width: 120px;
+}
+.firstColumn {
+    width: 40px;
+}
+
+.actionButtons {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
+}
+
+.joinBtn {
+    background: #007AFF;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 122, 255, 0.3);
+}
+
+.joinBtn:hover {
+    background: #0056CC;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 122, 255, 0.4);
+}
+
+.deleteBtn {
+    background: rgba(255, 59, 48, 0.1);
+    color: #FF3B30;
+    border: 1px solid rgba(255, 59, 48, 0.3);
+    padding: 6px 8px;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.deleteBtn:hover {
+    background: rgba(255, 59, 48, 0.2);
+    border-color: rgba(255, 59, 48, 0.5);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(255, 59, 48, 0.3);
+}
+
+.deleteBtn:active {
+    transform: translateY(0);
+    background: rgba(255, 59, 48, 0.3);
+}

@@ -1,0 +1,476 @@
+.gameControls {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 90vw;
+}
+
+.controlGroup {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    border-radius: 16px;
+    padding: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.3),
+        0 0 0 1px rgba(255, 255, 255, 0.05),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.controlBtn {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    min-width: 100px;
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 
+        0 4px 16px rgba(0, 0, 0, 0.2),
+        0 1px 3px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.quitBtn {
+    background: linear-gradient(135deg, #FF3B30, #D70015);
+    color: white;
+    box-shadow: 
+        0 4px 16px rgba(255, 59, 48, 0.3),
+        0 1px 3px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.quitBtn:hover {
+    background: linear-gradient(135deg, #D70015, #B30000);
+    transform: translateY(-2px);
+    box-shadow: 
+        0 8px 24px rgba(255, 59, 48, 0.4),
+        0 4px 12px rgba(0, 0, 0, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.drawBtn {
+    background: linear-gradient(135deg, #FFCC00, #FF9500);
+    color: #000;
+    box-shadow: 
+        0 4px 16px rgba(255, 204, 0, 0.3),
+        0 1px 3px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.drawBtn:hover {
+    background: linear-gradient(135deg, #FF9500, #FF8C00);
+    transform: translateY(-2px);
+    box-shadow: 
+        0 8px 24px rgba(255, 204, 0, 0.4),
+        0 4px 12px rgba(0, 0, 0, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.pauseBtn {
+    background: linear-gradient(135deg, #007AFF, #5856D6);
+    color: white;
+    box-shadow: 
+        0 4px 16px rgba(0, 122, 255, 0.3),
+        0 1px 3px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.pauseBtn:hover {
+    background: linear-gradient(135deg, #0056CC, #4C4CD4);
+    transform: translateY(-2px);
+    box-shadow: 
+        0 8px 24px rgba(0, 122, 255, 0.4),
+        0 4px 12px rgba(0, 0, 0, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.surrenderBtn {
+    background: linear-gradient(135deg, #FF6B35, #F7931E);
+    color: white;
+    box-shadow: 
+        0 4px 16px rgba(255, 107, 53, 0.3),
+        0 1px 3px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.surrenderBtn:hover {
+    background: linear-gradient(135deg, #F7931E, #E67E22);
+    transform: translateY(-2px);
+    box-shadow: 
+        0 8px 24px rgba(255, 107, 53, 0.4),
+        0 4px 12px rgba(0, 0, 0, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.pauseIndicator {
+    background: rgba(255, 204, 0, 0.15);
+    border: 2px solid #FFCC00;
+    border-radius: 12px;
+    padding: 16px 20px;
+    text-align: center;
+    backdrop-filter: blur(20px);
+    animation: pulse 2s infinite;
+    box-shadow: 
+        0 4px 16px rgba(255, 204, 0, 0.3),
+        0 0 0 1px rgba(255, 204, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.pauseText {
+    color: #FFCC00;
+    font-weight: 700;
+    font-size: 16px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.7;
+    }
+}
+
+.drawModal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    backdrop-filter: blur(20px);
+    animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        backdrop-filter: blur(0px);
+    }
+    to {
+        opacity: 1;
+        backdrop-filter: blur(20px);
+    }
+}
+
+.drawModalContent {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 24px;
+    padding: 32px;
+    max-width: 480px;
+    width: 90%;
+    text-align: center;
+    backdrop-filter: blur(30px);
+    box-shadow: 
+        0 25px 50px -12px rgba(0, 0, 0, 0.6),
+        0 0 0 1px rgba(255, 255, 255, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    position: relative;
+    overflow: hidden;
+    animation: slideUp 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.drawModalContent::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+}
+
+.drawModalContent::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 50%, rgba(255, 255, 255, 0.05) 100%);
+    border-radius: 24px;
+    pointer-events: none;
+}
+
+.drawModalContent h3 {
+    color: #ffffff;
+    margin: 0 0 20px 0;
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    position: relative;
+    z-index: 1;
+}
+
+.drawModalContent p {
+    color: rgba(255, 255, 255, 0.8);
+    margin: 0 0 28px 0;
+    font-size: 16px;
+    line-height: 1.6;
+    font-weight: 500;
+    position: relative;
+    z-index: 1;
+}
+
+.drawModalActions {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+}
+
+.acceptBtn {
+    background: linear-gradient(135deg, #34C759, #28A745);
+    color: white;
+    border: none;
+    padding: 14px 28px;
+    border-radius: 16px;
+    font-weight: 700;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    box-shadow: 
+        0 8px 24px rgba(52, 199, 89, 0.4),
+        0 1px 3px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+    min-width: 120px;
+}
+
+.acceptBtn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.acceptBtn:hover::before {
+    left: 100%;
+}
+
+.acceptBtn:hover {
+    background: linear-gradient(135deg, #28A745, #1E7E34);
+    transform: translateY(-2px);
+    box-shadow: 
+        0 12px 32px rgba(52, 199, 89, 0.5),
+        0 4px 12px rgba(0, 0, 0, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.declineBtn {
+    background: linear-gradient(135deg, #FF3B30, #D70015);
+    color: white;
+    border: none;
+    padding: 14px 28px;
+    border-radius: 16px;
+    font-weight: 700;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    box-shadow: 
+        0 8px 24px rgba(255, 59, 48, 0.4),
+        0 1px 3px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+    min-width: 120px;
+}
+
+.declineBtn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.declineBtn:hover::before {
+    left: 100%;
+}
+
+.declineBtn:hover {
+    background: linear-gradient(135deg, #D70015, #B30000);
+    transform: translateY(-2px);
+    box-shadow: 
+        0 12px 32px rgba(255, 59, 48, 0.5),
+        0 4px 12px rgba(0, 0, 0, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+@media (max-width: 1024px) {
+    .gameControls {
+        bottom: 16px;
+        max-width: 85vw;
+    }
+    
+    .controlBtn {
+        min-width: 90px;
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 768px) {
+    .gameControls {
+        bottom: 8px;
+        left: 8px;
+        right: 8px;
+        transform: none;
+        max-width: none;
+        z-index: 1001;
+    }
+    
+    .controlGroup {
+        justify-content: space-between;
+        padding: 8px;
+        gap: 6px;
+        flex-wrap: nowrap;
+        border-radius: 12px;
+    }
+    
+    .controlBtn {
+        flex: 1;
+        min-width: 60px;
+        font-size: 11px;
+        padding: 8px 6px;
+        border-radius: 8px;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+    
+    .drawModalContent {
+        margin: 16px;
+        padding: 24px;
+        max-width: calc(100vw - 32px);
+        border-radius: 20px;
+    }
+    
+    .drawModalContent h3 {
+        font-size: 20px;
+        margin-bottom: 16px;
+    }
+    
+    .drawModalContent p {
+        font-size: 14px;
+        margin-bottom: 24px;
+    }
+    
+    .drawModalActions {
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    .acceptBtn,
+    .declineBtn {
+        width: 100%;
+        padding: 12px 20px;
+        min-height: 48px;
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 640px) {
+    .controlGroup {
+        gap: 4px;
+        padding: 6px;
+    }
+    
+    .controlBtn {
+        min-width: 50px;
+        font-size: 10px;
+        padding: 6px 4px;
+        min-height: 40px;
+    }
+}
+
+@media (max-width: 480px) {
+    .gameControls {
+        bottom: 4px;
+        left: 4px;
+        right: 4px;
+    }
+    
+    .controlBtn {
+        min-width: 45px;
+        font-size: 9px;
+        padding: 6px 2px;
+        min-height: 36px;
+        border-radius: 6px;
+    }
+    
+    .controlGroup {
+        padding: 6px;
+        gap: 3px;
+        border-radius: 10px;
+    }
+    
+    .drawModalContent {
+        margin: 12px;
+        padding: 20px;
+        border-radius: 16px;
+    }
+    
+    .drawModalContent h3 {
+        font-size: 18px;
+        margin-bottom: 12px;
+    }
+    
+    .drawModalContent p {
+        font-size: 13px;
+        margin-bottom: 20px;
+    }
+    
+    .acceptBtn,
+    .declineBtn {
+        padding: 10px 16px;
+        min-height: 44px;
+        font-size: 14px;
+    }
+}
+
