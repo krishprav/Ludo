@@ -20,12 +20,26 @@ app.use(express.json());
 app.set('trust proxy', 1);
 app.use(
     cors({
-        origin: [
-            process.env.FRONTEND_URL || 'https://ludo-eight-beta.vercel.app',
-            'https://ludo-eight-beta.vercel.app',
-            'https://ludo-eight-beta.vercel.app/'
-        ],
+        origin: function (origin, callback) {
+            // Allow requests with no origin (like mobile apps or curl requests)
+            if (!origin) return callback(null, true);
+            
+            const allowedOrigins = [
+                'https://ludo-eight-beta.vercel.app',
+                'https://ludo-eight-beta.vercel.app/',
+                'http://localhost:3000',
+                process.env.FRONTEND_URL
+            ].filter(Boolean);
+            
+            if (allowedOrigins.includes(origin)) {
+                callback(null, true);
+            } else {
+                callback(new Error('Not allowed by CORS'));
+            }
+        },
         credentials: true,
+        methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+        allowedHeaders: ['Content-Type', 'Authorization', 'Cookie']
     })
 );
 app.use(sessionMiddleware);
@@ -34,8 +48,18 @@ app.get('/', (req, res) => {
     res.json({ 
         status: 'OK', 
         message: 'Ludo Backend Server is running!',
-        timestamp: new Date().toISOString()
+        timestamp: new Date().toISOString(),
+        cors: 'Configured for Vercel deployment'
     });
+});
+
+// Add explicit OPTIONS handler for CORS preflight
+app.options('*', (req, res) => {
+    res.header('Access-Control-Allow-Origin', req.headers.origin || 'https://ludo-eight-beta.vercel.app');
+    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Cookie');
+    res.header('Access-Control-Allow-Credentials', 'true');
+    res.sendStatus(200);
 });
 
 const server = app.listen(PORT, () => {
