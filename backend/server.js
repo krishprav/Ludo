@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 require('dotenv').config();
 const { sessionMiddleware } = require('./config/session');
 
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 8080;
 
 const app = express();
 
@@ -20,13 +20,23 @@ app.use(express.json());
 app.set('trust proxy', 1);
 app.use(
     cors({
-        origin: 'http://localhost:3000',
+        origin: process.env.FRONTEND_URL || 'http://localhost:3000',
         credentials: true,
     })
 );
 app.use(sessionMiddleware);
 
-const server = app.listen(PORT);
+app.get('/', (req, res) => {
+    res.json({ 
+        status: 'OK', 
+        message: 'Ludo Backend Server is running!',
+        timestamp: new Date().toISOString()
+    });
+});
+
+const server = app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+});
 
 require('./config/database')(mongoose);
 require('./config/socket')(server);
