@@ -5,7 +5,11 @@ const socketManager = {
     initialize(server) {
         this.io = require('socket.io')(server, {
             cors: {
-                origin: process.env.FRONTEND_URL || 'https://ludo-eight-beta.vercel.app',
+                origin: [
+                    process.env.FRONTEND_URL || 'https://ludo-eight-beta.vercel.app',
+                    'https://ludo-eight-beta.vercel.app',
+                    'https://ludo-eight-beta.vercel.app/'
+                ],
                 credentials: true,
             },
             allowRequest: (req, callback) => {

@@ -20,7 +20,11 @@ app.use(express.json());
 app.set('trust proxy', 1);
 app.use(
     cors({
-        origin: process.env.FRONTEND_URL || 'https://ludo-eight-beta.vercel.app',
+        origin: [
+            process.env.FRONTEND_URL || 'https://ludo-eight-beta.vercel.app',
+            'https://ludo-eight-beta.vercel.app',
+            'https://ludo-eight-beta.vercel.app/'
+        ],
         credentials: true,
     })
 );
