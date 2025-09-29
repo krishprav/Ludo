@@ -13,7 +13,8 @@ function App() {
     const [playerSocket, setPlayerSocket] = useState();
     const [redirect, setRedirect] = useState();
     useEffect(() => {
-        const socket = io(`http://${window.location.hostname}:8080`, { withCredentials: true });
+        const backendUrl = process.env.REACT_APP_API_URL || `https://ludo-7t2e.onrender.com`;
+        const socket = io(backendUrl, { withCredentials: true });
         socket.on('player:data', data => {
             data = JSON.parse(data);
             setPlayerData(data);
