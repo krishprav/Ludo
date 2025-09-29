@@ -6,11 +6,13 @@ const socketManager = {
         this.io = require('socket.io')(server, {
             cors: {
                 origin: [
-                    process.env.FRONTEND_URL || 'https://ludo-eight-beta.vercel.app',
                     'https://ludo-eight-beta.vercel.app',
-                    'https://ludo-eight-beta.vercel.app/'
-                ],
+                    'https://ludo-eight-beta.vercel.app/',
+                    'http://localhost:3000',
+                    process.env.FRONTEND_URL
+                ].filter(Boolean),
                 credentials: true,
+                methods: ['GET', 'POST']
             },
             allowRequest: (req, callback) => {
                 const fakeRes = {
